@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  .bigButton{
+    font-size: 20px;
+    padding: 12px 30px;
+    background-colour: pink;
+    colour: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+  }
+</style>
 <title>My First Cloud Web Page</title>
 </head>
 <body>
@@ -11,7 +24,7 @@
 <img id="myImage" src="hajimicat.jpg" width="300">
 
 <br><br>
-<button onclick="changeImage()"></button>
+<button onclick="changeImage()" class="bigButton">TOUCH ME</button>
 
 <script>
   function changeImage(){
@@ -30,6 +43,7 @@
     
   
   
+
 
 
 
