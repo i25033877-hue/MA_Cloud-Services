@@ -48,11 +48,51 @@ img{
   }
 
 </script>
+
+<script>
+  function changeImage(){
+    var img = document.getElementById("myImage");
+
+    if (img.src.includes("hajimicat.jpg")){
+      img.src = "hajimicat2.jpeg";
+    } else{
+      img.src = "hajimicat.jpg";
+    }
+  }
+
+  // 🌈 平滑 RGB 渐变循环
+  var r = 255;
+  var g = 0;
+  var b = 0;
+
+  var step = 1;
+
+  setInterval(function(){
+
+    if(r > 0 && b == 0){
+      r -= step;
+      g += step;
+    }
+    else if(g > 0 && r == 0){
+      g -= step;
+      b += step;
+    }
+    else if(b > 0 && g == 0){
+      b -= step;
+      r += step;
+    }
+
+    document.body.style.backgroundColor =
+      "rgb(" + r + "," + g + "," + b + ")";
+
+  }, 10);
+</script>
 </body>
 </html>
     
   
   
+
 
 
 
