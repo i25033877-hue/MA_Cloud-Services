@@ -48,36 +48,32 @@ img{
     }
   }
 
-  // 🌈 10分段 来回 RGB 渐变
-  let hue = 0;
-  let direction = 1; // 1 = 向右流动, -1 = 向左流动
+  // 🌈 超丝滑 360 段彩虹流动
+  let offset = 0;
 
   setInterval(function(){
 
     let gradient = "linear-gradient(to right";
 
-    for(let i = 0; i <= 5; i++){
-      let color = `hsl(${(hue + i*25) % 360}, 100%, 50%)`;
-      gradient += `, ${color}`;
+    for(let i = 0; i < 360; i++){
+      let hue = (i + offset) % 360;
+      gradient += `, hsl(${hue}, 100%, 50%)`;
     }
 
     gradient += ")";
+
     document.body.style.background = gradient;
 
-    hue += direction;
+    offset += 1;  // 控制流动速度
 
-    // 到达边界就反方向
-    if(hue >= 360 || hue <= 0){
-      direction *= -1;
-    }
-
-  }, 20);
+  }, 30);
 </script>
 </body>
 </html>
     
   
   
+
 
 
 
