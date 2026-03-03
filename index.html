@@ -36,18 +36,6 @@ img{
 <br><br>
 <button onclick="changeImage()" class="bigButton">TOUCH ME :)</button>
 
-<script>
-  function changeImage(){
-    var img = document.getElementById("myImage");
-
-    if (img.src.includes("hajimicat.jpg")){
-      img.src = "hajimicat2.jpeg";
-    } else{
-      img.src = "hajimicat.jpg";
-    }
-  }
-
-</script>
 
 <script>
   function changeImage(){
@@ -60,38 +48,37 @@ img{
     }
   }
 
-  // 🌈 平滑 RGB 渐变循环
-  var r = 255;
-  var g = 0;
-  var b = 0;
-
-  var step = 1;
+  // 🌈 10分段 来回 RGB 渐变
+  let hue = 0;
+  let direction = 1; // 1 = 向右流动, -1 = 向左流动
 
   setInterval(function(){
 
-    if(r > 0 && b == 0){
-      r -= step;
-      g += step;
-    }
-    else if(g > 0 && r == 0){
-      g -= step;
-      b += step;
-    }
-    else if(b > 0 && g == 0){
-      b -= step;
-      r += step;
+    let gradient = "linear-gradient(to right";
+
+    for(let i = 0; i <= 10; i++){
+      let color = `hsl(${(hue + i*25) % 360}, 100%, 50%)`;
+      gradient += `, ${color}`;
     }
 
-    document.body.style.backgroundColor =
-      "rgb(" + r + "," + g + "," + b + ")";
+    gradient += ")";
+    document.body.style.background = gradient;
 
-  }, 10);
+    hue += direction;
+
+    // 到达边界就反方向
+    if(hue >= 360 || hue <= 0){
+      direction *= -1;
+    }
+
+  }, 20);
 </script>
 </body>
 </html>
     
   
   
+
 
 
 
